@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<simulation>
+  <context id="cube">
+    <calendar type="Gregorian"
+	      start_date="2012-03-01 15:00:00"
+	      time_origin="2012-02-28 15:00:00 + 1d" />
+    <axis_definition>
+      <axis id="z" />
+    </axis_definition>
+
+    <domain_definition>
+      <domain id="xy" type="rectilinear"/>
+    </domain_definition>
+
+    <grid_definition>
+      <grid id="threeD">
+	<domain domain_ref="xy" />
+	<axis axis_ref="z" />
+      </grid>
+
+      <grid id="zmin">
+	<domain domain_ref="xy" />
+	<scalar id="zmin">
+	  <reduce_axis operation="min" />
+	</scalar>
+      </grid>
+      
+    </grid_definition>
+
+    <field_definition>
+      <field id="temp"
+	     operation="instant"
+	     grid_ref="threeD"/>
+      <field id="zmin"
+	     operation="instant"
+	     grid_ref="zmin"/>
+    </field_definition>
+    
+    <file_definition type="multiple_file" output_freq="1d">
+      <file id="output" name="cube" output_freq="1d">
+        <field field_ref="temp" />
+	<field field_ref="zmin" />
+      </file>
+    </file_definition>
+  </context>
+    
+  <context id="xios">
+    <variable_definition>
+      <variable_group id="buffer">
+        <variable id="optimal_buffer_size" type="string">performance</variable>
+        <variable id="buffer_size_factor" type="double">1.0</variable>
+      </variable_group>
+
+      <variable_group id="parameters" >
+        <variable id="using_server" type="bool">false</variable>
+        <variable id="info_level" type="int">50</variable>
+        <variable id="print_file" type="bool">true</variable>
+      </variable_group>
+    </variable_definition>
+  </context>
+
+
+</simulation>
+

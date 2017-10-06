@@ -31,11 +31,18 @@ y = 60*np.arange(60)[np.newaxis, :, np.newaxis]
 z = np.arange(60)[:, np.newaxis, np.newaxis]
 comp = x+y+z
 
-assert np.all(comp==temp)
+print "Full output OK?", np.all(comp==temp)
 
-print "basic output OK"
-
+# first time index only...
 zmin_file = data.variable('zmin')[0]
+zmean_file = data.variable('zmean')[0]
+zmax_file = data.variable('zmax')[0]
 
 zmin_computed = temp.min(axis=0)
-assert np.all(zmin_computed == zmin_file)
+zmean_computed = temp.mean(axis=0)
+zmax_computed = temp.max(axis=0)
+
+print "Min OK?", np.all(zmin_computed == zmin_file)
+print "Mean OK?", np.all(zmean_computed == zmean_file)
+print "Max OK?", np.all(zmax_computed == zmax_file)
+

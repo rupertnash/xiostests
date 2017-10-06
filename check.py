@@ -36,4 +36,6 @@ assert np.all(comp==temp)
 print "basic output OK"
 
 zmin_file = data.variable('zmin')[0]
-zmin_comp = comp.min(axis=0)
+
+zmin_computed = temp.min(axis=0)
+assert np.all(zmin_computed == zmin_file)

@@ -32,6 +32,7 @@
 	     operation="instant"
 	     grid_ref="threeD"/>
       <field id="zmin"
+	     field_ref="temp"
 	     operation="instant"
 	     grid_ref="zmin"/>
     </field_definition>
@@ -58,7 +59,6 @@
       </variable_group>
     </variable_definition>
   </context>
-
 
 </simulation>
 

@@ -36,35 +36,26 @@
 	  <reduce_axis operation="max" />
 	</scalar>
       </grid>
-      
     </grid_definition>
-
+    
     <field_definition>
       <field id="temp"
-	     operation="instant"
-	     grid_ref="threeD"/>
-      <field id="zmin"
-	     field_ref="temp"
-	     operation="instant"
-	     grid_ref="zmin"/>
-      <field id="zmean"
-	     field_ref="temp"
-	     operation="instant"
-	     grid_ref="zmean"/>
-      <field id="zmax"
-	     field_ref="temp"
-	     operation="instant"
-	     grid_ref="zmax"/>
+	     grid_ref="threeD"
+	     operation="instant" />
     </field_definition>
     
     <file_definition type="multiple_file" output_freq="1d">
       <file id="output" name="cube" output_freq="1d">
-        <field field_ref="temp" />
-	<field field_ref="zmin" />
-	<field field_ref="zmean" />
-	<field field_ref="zmax" />
+	<field field_ref="temp" />
+	<field name="zmin" field_ref="temp" grid_ref="zmin"
+	       />
+	<field name="zmean" field_ref="temp" grid_ref="zmean"
+	       />
+	<field name="zmax" field_ref="temp" grid_ref="zmax"
+	       />
       </file>
     </file_definition>
+    
   </context>
     
   <context id="xios">

@@ -13,10 +13,13 @@ cd $PBS_O_WORKDIR
 
 export OMP_NUM_THREADS=1
 
-XIOS_BUILD_DIR=/home/n02/n02/rnashn02/xios/ensemble
+XIOS_BUILD_DIR=/home/n02/n02/rnashn02/xios/trunk
 export PATH=$XIOS_BUILD_DIR/bin:$PATH
 
-aprun  -n 8 -N 8 ./cube.exe  : -n 2 -N 2 xios_server.exe
+rm -f xios_server.exe
+ln -s $XIOS_BUILD_DIR/bin/xios_server.exe
+
+aprun  -n 8 -N 8 ./cube.exe  : -n 2 -N 2 ./xios_server.exe
 
 
 

@@ -37,7 +37,7 @@
     
     <file_definition type="multiple_file" par_access="collective" output_freq="6h" output_level="10">
       <file id="output" name="output">
-	<field field_ref="field_A" grid_ref="grid_A" />
+	<field field_ref="field_A" grid_ref="grid_A_ensmax" />
       </file>
     </file_definition>
 

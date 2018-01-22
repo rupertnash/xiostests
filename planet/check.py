@@ -76,15 +76,14 @@ time_idx = 0
 data = TwoFile('output')
 lon = data.variables['nav_lon']
 lat = data.variables['nav_lat']
-fa_max = data.variables['field_A'][time_idx]
+fa_min = data.variables['min'][time_idx]
+fa_mean = data.variables['mean'][time_idx]
+fa_max = data.variables['max'][time_idx]
 
 print "lat match?", np.all(lat_glo == lat)
 print "lon match?", np.all(lon_glo == lon)
 
-# print "min(field_A) match?", np.all(fa_min == field_A_glo)
+print "min(field_A) match?", np.all(fa_min == field_A_glo)
+print "mean(field_A) match?", np.all(fa_mean == (field_A_glo+0.5))
 print "max(field_A) match?", np.all(fa_max == field_A_glo+1)
 
-# print "min(field_A) == max(field_A)?", np.all(fa_min == fa_max)
-
-# print "half match?", np.all((fa_min == field_A_glo)[:,:50,:])
-# print "half match?", np.all((fa_max == field_A_glo+1)[:,50:,:])

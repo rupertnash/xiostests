@@ -20,6 +20,20 @@
 	<axis axis_ref="ensemble" />
       </grid>
       
+      <grid id="grid_A_ensmin">
+	<domain domain_ref="domain_A" />
+	<axis axis_ref="axis_A" />
+	<scalar id="ensmin">
+	  <reduce_axis operation="min" />
+	</scalar>
+      </grid>
+      <grid id="grid_A_ensmean">
+	<domain domain_ref="domain_A" />
+	<axis axis_ref="axis_A" />
+	<scalar id="ensmean">
+	  <reduce_axis operation="average" />
+	</scalar>
+      </grid>
       <grid id="grid_A_ensmax">
 	<domain domain_ref="domain_A" />
 	<axis axis_ref="axis_A" />
@@ -37,7 +51,9 @@
     
     <file_definition type="multiple_file" par_access="collective" output_freq="6h" output_level="10">
       <file id="output" name="output">
-	<field field_ref="field_A" grid_ref="grid_A_ensmax" />
+	<field name="min" field_ref="field_A" grid_ref="grid_A_ensmin" />
+	<field name="mean" field_ref="field_A" grid_ref="grid_A_ensmean" />
+	<field name="max" field_ref="field_A" grid_ref="grid_A_ensmax" />
       </file>
     </file_definition>
 

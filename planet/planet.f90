@@ -107,7 +107,7 @@ PROGRAM planet
 
   CALL xios_context_finalize()
   ! ENS: free our sub comm
-  CALL MPI_COMM_FREE(planet_comm)
+  CALL MPI_COMM_FREE(planet_comm, ierr)
   
   DEALLOCATE(lon, lat, field_A, lonvalue)
 
